@@ -1,0 +1,147 @@
+html {
+  height: 100%;
+}
+body {
+  background-color: white;
+  color: black;
+  height: 90%;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.bookmark {
+  display: flex;
+  min-height: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  align-items: center;
+}
+
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  height: fit-content;
+}
+
+a {
+  max-width: 20ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-right: 30px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+}
+
+a:active {
+  color: blue;
+}
+
+img {
+  background-color: black;
+  filter: drop-shadow(1px 1px 0 rgb(113, 113, 113)) 
+          drop-shadow(1px 1px 0 rgb(113, 113, 113));
+          background-color: black;
+}
+
+.quote-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote {
+  text-align: center;
+  font-weight: bold;
+  max-width: 80%;
+  font-size: 36px;
+  font-family: ui-serif;
+}
+
+.list {
+  display: none;
+  width: 95vw;
+}
+
+.edit-button {
+  background-color: transparent;
+  color: inherit;
+}
+
+.bookmark-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+  margin: 0px;
+  height: min-content;
+}
+
+.edit-bookmarks {
+  cursor: pointer;
+  background: none;
+}
+
+.toggle-theme {
+  cursor: pointer;
+  background: none;
+}
+
+/* Make everything horizontal */
+.horizontal-list {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* Each folder will be in a row */
+.folder {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 40px;
+}
+
+/* Nested bookmarks will be in the same row */
+.nested {
+    display: none;
+    flex-direction: row; /* Keeps it inline */
+    align-items: center;
+    gap: 0px;
+}
+
+/* Bookmark item */
+.bookmark {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* Bookmark icons */
+.bookmark img {
+    width: 16px;
+    height: 16px;
+}
+
+/* When folder is open, show inline */
+.folder.open .nested {
+    display: flex;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}

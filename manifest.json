@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "New Tab",
+  "version": "1.0",
+  "description": "New Tab Extension",
+  "author": "Aniket Priyadarshi",
+  "chrome_url_overrides" : {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "storage",
+    "bookmarks",
+    "favicon"
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "128": "icon128.png"
+  }
+}
