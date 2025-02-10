@@ -12,6 +12,15 @@
     "bookmarks",
     "favicon"
   ],
+  "background": {
+    "scripts": ["browser-polyfill.js"],
+    "persistent": false
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "addon@example.com"
+    }
+  },
   "icons": {
     "16": "icon16.png",
     "128": "icon128.png"

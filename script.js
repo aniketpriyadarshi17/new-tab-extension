@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () { 
+    const storage = chrome.storage?.sync || browser.storage?.sync;
     const bookmarkList = document.getElementById("bookmarkList");
     bookmarkList.classList.add("horizontal-list"); // Ensure the main list is horizontal
 
@@ -100,12 +101,25 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    const isFirefox = typeof browser !== "undefined"; // Detects Firefox
+
+    if (isFirefox) {
+        const bookmarkContainer = document.getElementById("bookmark-container");
+        const bookmarkList = document.getElementById("bookmarkList");
+        const editBookmarks = document.getElementById("edit-bookmarks");
+        if (bookmarkList) {
+            bookmarkList.style.display = "none"; // Hides the bookmarks list in Firefox
+            bookmarkContainer.style.justifyContent = "flex-end";
+        }
+        if (editBookmarks) {
+            editBookmarks.style.display = "none"; // Hides the bookmarks list in Firefox
+        }
+    }
 
     const list = document.getElementById('list');
     var quotes_list = [];
 
-    chrome.storage.sync.get(/* String or Array */["list"], function(items){
-        console.log(items['list']);
+    storage.get(["list"], function(items){
         if (items['list'] == '' || items['list'] == null) {
             quotes = ['Edit List to See Quotes'];
         } else {
@@ -125,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             list.style.display = 'none';
             edit_button.innerHTML = "Edit Quotes";
-            chrome.storage.sync.set({ "list": list.value }, function(){});
+            storage.set({ "list": list.value }, function(){});
             quotes = list.value.split('^');
             document.getElementById('quote').innerText = quotes[Math.floor(((Math.random() + Date.now()) % 1.0) * quotes.length)];
         }
@@ -137,8 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    chrome.storage.sync.get(/* String or Array */["light"], function(item){
-        console.log(item);
+    storage.get(/* String or Array */["light"], function(item){
         if (item['light'] != true) {
             var element = document.body;
             element.classList.toggle("dark-mode");
@@ -148,8 +161,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('toggle-theme').onclick = function() {
         var element = document.body;
         element.classList.toggle("dark-mode");
-        console.log(element.classList.value == '');
-        chrome.storage.sync.set({ "light": element.classList.value == '' }, function(){});
-        chrome.storage.sync.get(/* String or Array */["light"], function(item){console.log(item)});
+        storage.set({ "light": element.classList.value == '' }, function(){});
     };
 });

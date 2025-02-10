@@ -59,10 +59,10 @@ img {
 
 .quote {
   text-align: center;
-  font-weight: bold;
+  font-weight: 300;
   max-width: 80%;
-  font-size: 36px;
-  font-family: ui-serif;
+  font-size: 32px;
+  font-family: Calibri;
 }
 
 .list {
@@ -73,6 +73,7 @@ img {
 .edit-button {
   background-color: transparent;
   color: inherit;
+  border-width: 1px;
 }
 
 .bookmark-container {
@@ -86,11 +87,13 @@ img {
 .edit-bookmarks {
   cursor: pointer;
   background: none;
+  border-width: 1px;
 }
 
 .toggle-theme {
   cursor: pointer;
   background: none;
+  border-width: 1px;
 }
 
 /* Make everything horizontal */
